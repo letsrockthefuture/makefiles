@@ -5,4 +5,4 @@ export DEBUG ?=
 
 # include $(MAKEFILES_PATH)/Makefile.*
 include $(MAKEFILES_PATH)/.makefiles/modules/*/Makefile*
-include $(MAKEFILES_PATH)/.makefiles/templates/Makefile.makefiles
+# include $(MAKEFILES_PATH)/.makefiles/templates/Makefile.makefiles
