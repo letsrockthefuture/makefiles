@@ -7,4 +7,4 @@ export SELF ?= $(MAKE)
 export DEBUG ?=
 
 include $(MAKEFILES_PATH)/modules/*/Makefile*
-include $(MAKEFILES_PATH)/templates/Makefile
+# include $(MAKEFILES_PATH)/templates/Makefile
