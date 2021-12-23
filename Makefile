@@ -1,6 +1,6 @@
-export MAKEFILES_PATH ?= $(shell 'pwd')
-export SELF ?= $(MAKE)
+export SHELL := /bin/bash -o pipefail
 
-export DEBUG ?=
+work_dir ?= $(shell "pwd")
+debug ?=
 
-include $(MAKEFILES_PATH)/.makefiles/modules/*/Makefile*
+include $(work_dir)/.makefiles/modules/*/Makefile*
