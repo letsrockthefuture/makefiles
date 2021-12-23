@@ -21,6 +21,12 @@ terraform/apply:
 	@terraform -chdir=${chdir} get
 	@terraform -chdir=${chdir} apply -auto-approve
 
+.PHONY: terraform/show
+terraform/show:
+	@terraform -chdir=${chdir} init
+	@terraform -chdir=${chdir} get
+	@terraform -chdir=${chdir} show
+
 .PHONY: terraform/destroy
 terraform/destroy:
 	@terraform -chdir=${chdir} destroy -auto-approve
