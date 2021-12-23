@@ -13,3 +13,5 @@ endef
 .PHONY: init
 init::
 	@$(install)
+
+-include .makefiles/Makefile
