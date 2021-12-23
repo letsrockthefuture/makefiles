@@ -1,17 +1,14 @@
 export SHELL = /bin/bash
-export PWD = $(shell pwd)
-export MAKEFILES_ORGANIZATION ?= letsrockthefuture
-export MAKEFILES_PROJECT ?= makefiles
-export MAKEFILES_BRANCH ?= main
+export GITHUB_REPOSITORY ?= "https://github.com/letsrockthefuture/makefiles.git"
 
-define install
+define makefiles_install
 curl --retry 5 --fail --silent --retry-delay 1 \
-	https://raw.githubusercontent.com/$(MAKEFILES_ORGANIZATION)/$(MAKEFILES_PROJECT)/$(MAKEFILES_BRANCH)/bin/install.sh | \
-	bash -s "$(MAKEFILES_ORGANIZATION)" "$(MAKEFILES_PROJECT)" "$(MAKEFILES_BRANCH)"
+	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/install.sh | \
+	bash -s
 endef
 
 .PHONY: init
 init::
-	@$(install)
+	@$(makefiles_install)
 
 -include .makefiles/Makefile

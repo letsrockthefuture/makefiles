@@ -1,15 +1,12 @@
 #!/bin/bash
 
-export MAKEFILES_ORGANIZATION=${1:-letsrockthefuture}
-export MAKEFILES_PROJECT=${2:-makefiles}
-export MAKEFILES_BRANCH=${3:-main}
-export MAKEFILES=".${MAKEFILES_PROJECT}"
-export GITHUB_REPOSITORY="https://github.com/${MAKEFILES_ORGANIZATION}/${MAKEFILES_PROJECT}.git"
+export GITHUB_REPOSITORY="https://github.com/letsrockthefuture/makefiles.git"
+export HEAD="main"
 
-if [ "${MAKEFILES}" ] && [ -d "${MAKEFILES}" ]; then
-  echo "Removing existing ${MAKEFILES}..."
-  rm -rf "${MAKEFILES}"
+if [ ".makefiles" ] && [ -d ".makefiles" ]; then
+  echo "Removing existing .makefiles..."
+  rm -rf ".makefiles"
 fi
 
-echo "Cloning ${GITHUB_REPOSITORY}#${MAKEFILES_BRANCH}..."
-git clone -c advice.detachedHead=false --depth=1 -b $MAKEFILES_BRANCH $GITHUB_REPOSITORY ${MAKEFILES}
+echo "Cloning ${GITHUB_REPOSITORY}#${HEAD}..."
+git clone -c advice.detachedHead=false --depth=1 -b ${HEAD} ${GITHUB_REPOSITORY} .makefiles
