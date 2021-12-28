@@ -2,14 +2,14 @@ export SHELL := /bin/bash -o pipefail
 
 work_dir ?= $(shell "pwd")
 
-define makefiles_clone
+define makefiles_install
 curl --retry 5 --fail --silent --retry-delay 1 \
-	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/clone.sh | \
+	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/install.sh | \
 	bash -s
 endef
 
 .PHONY: init
 init::
-	@$(makefiles_clone)
+	@$(makefiles_install)
 
 -include $(work_dir)/.makefiles/Makefile
