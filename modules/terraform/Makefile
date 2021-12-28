@@ -1,37 +1,35 @@
 export SHELL := /bin/bash -o pipefail
 
-chdir ?= terraform
-
 .PHONY: terraform/init
 terraform/init:
-	@terraform -chdir=${chdir} init
-	@terraform -chdir=${chdir} get
+	@terraform init
+	@terraform get
 
 .PHONY: terraform/plan
 terraform/plan:
-	@terraform -chdir=${chdir} fmt -recursive -check -diff
-	@terraform -chdir=${chdir} init
-	@terraform -chdir=${chdir} get
-	@terraform -chdir=${chdir} validate -no-color
-	@terraform -chdir=${chdir} plan -no-color
+	@terraform fmt -recursive -check -diff
+	@terraform init
+	@terraform get
+	@terraform validate -no-color
+	@terraform plan -no-color
 
 .PHONY: terraform/apply
 terraform/apply:
-	@terraform -chdir=${chdir} init
-	@terraform -chdir=${chdir} get
-	@terraform -chdir=${chdir} apply -auto-approve
+	@terraform init
+	@terraform get
+	@terraform apply -auto-approve
 
 .PHONY: terraform/show
 terraform/show:
-	@terraform -chdir=${chdir} init
-	@terraform -chdir=${chdir} get
-	@terraform -chdir=${chdir} show
+	@terraform init
+	@terraform get
+	@terraform show
 
 .PHONY: terraform/destroy
 terraform/destroy:
-	@terraform -chdir=${chdir} destroy -auto-approve
+	@terraform destroy -auto-approve
 
 .PHONY: terraform/clean
 terraform/clean:
-	@rm -rf ${chdir}.terraform
-	@rm -rf ${chdir}.*/*/.terraform
+	@rm -rf .terraform
+	@rm -rf .*/*/.terraform
