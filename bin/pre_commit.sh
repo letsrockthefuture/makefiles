@@ -1,5 +1,7 @@
 #!/bin/bash
 
+export SHELL=/bin/bash
+
 github_url="https://github.com/letsrockthefuture/terraform-repository-template.git"
 chdir=".terraform-repository-template"
 
