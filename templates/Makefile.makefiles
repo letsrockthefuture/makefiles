@@ -4,7 +4,7 @@ work_dir ?= $(shell "pwd")
 
 define makefiles_install
 curl --retry 5 --fail --silent --retry-delay 1 \
-	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/install.sh | \
+	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/init.sh | \
 	bash -s
 endef
 
