@@ -1,7 +1,7 @@
 #!/bin/bash
 
-github_url="https://github.com/letsrockthefuture/makefiles.git"
-chdir=".makefiles"
+github_url="https://github.com/letsrockthefuture/terraform-repository-template.git"
+chdir=".terraform-repository-template"
 
 if [ ${chdir} ] && [ -d ${chdir} ]; then
     echo "Removing existing ${chdir}..."
