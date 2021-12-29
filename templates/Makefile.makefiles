@@ -2,7 +2,7 @@ export SHELL := /bin/bash -o pipefail
 
 work_dir ?= $(shell "pwd")
 
-define makefiles_install
+define makefiles_init
 curl --retry 5 --fail --silent --retry-delay 1 \
 	https://raw.githubusercontent.com/letsrockthefuture/makefiles/main/bin/init.sh | \
 	bash -s
@@ -10,6 +10,6 @@ endef
 
 .PHONY: init
 init::
-	@$(makefiles_install)
+	@$(makefiles_init)
 
 -include $(work_dir)/.makefiles/Makefile
