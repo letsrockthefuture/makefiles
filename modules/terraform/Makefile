@@ -7,6 +7,7 @@ terraform/init:
 
 .PHONY: terraform/plan
 terraform/plan:
+	@echo $(pwd)
 	@terraform fmt -recursive -check -diff
 	@terraform init
 	@terraform get
