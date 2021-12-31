@@ -1,32 +1,32 @@
 export SHELL := /bin/bash -o pipefail
 
-TERRAFORM_CHDIR ?= .
+CHDIR ?= .
 
 .PHONY: terraform/init
 terraform/init:
-	@terraform -chdir=$(TERRAFORM_CHDIR) init
-	@terraform -chdir=$(TERRAFORM_CHDIR) get
+	@terraform -chdir=$(CHDIR) init
+	@terraform -chdir=$(CHDIR) get
 
 .PHONY: terraform/plan
 terraform/plan:
-	@terraform -chdir=$(TERRAFORM_CHDIR) fmt -recursive -check -diff
-	@terraform -chdir=$(TERRAFORM_CHDIR) init
-	@terraform -chdir=$(TERRAFORM_CHDIR) get
-	@terraform -chdir=$(TERRAFORM_CHDIR) validate -no-color
-	@terraform -chdir=$(TERRAFORM_CHDIR) plan -no-color
+	@terraform -chdir=$(CHDIR) fmt -recursive -check -diff
+	@terraform -chdir=$(CHDIR) init
+	@terraform -chdir=$(CHDIR) get
+	@terraform -chdir=$(CHDIR) validate -no-color
+	@terraform -chdir=$(CHDIR) plan -no-color
 
 .PHONY: terraform/apply
 terraform/apply:
-	@terraform -chdir=$(TERRAFORM_CHDIR) init
-	@terraform -chdir=$(TERRAFORM_CHDIR) get
-	@terraform -chdir=$(TERRAFORM_CHDIR) apply -auto-approve
+	@terraform -chdir=$(CHDIR) init
+	@terraform -chdir=$(CHDIR) get
+	@terraform -chdir=$(CHDIR) apply -auto-approve
 
 .PHONY: terraform/show
 terraform/show:
-	@terraform -chdir=$(TERRAFORM_CHDIR) init
-	@terraform -chdir=$(TERRAFORM_CHDIR) get
-	@terraform -chdir=$(TERRAFORM_CHDIR) show
+	@terraform -chdir=$(CHDIR) init
+	@terraform -chdir=$(CHDIR) get
+	@terraform -chdir=$(CHDIR) show
 
 .PHONY: terraform/destroy
 terraform/destroy:
-	@terraform -chdir=$(TERRAFORM_CHDIR) destroy -auto-approve
+	@terraform -chdir=$(CHDIR) destroy -auto-approve
